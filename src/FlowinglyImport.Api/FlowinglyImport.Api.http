@@ -1,0 +1,6 @@
+@FlowinglyImport.Api_HostAddress = http://localhost:5150
+
+GET {{FlowinglyImport.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

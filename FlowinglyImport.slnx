@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/FlowinglyImport.Api/FlowinglyImport.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/FlowinglyImport.Api.Tests/FlowinglyImport.Api.Tests.csproj" />
+  </Folder>
+</Solution>
