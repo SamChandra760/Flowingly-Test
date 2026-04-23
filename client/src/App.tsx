@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import type { FormEvent } from 'react'
 import './App.css'
 import { parseImportText } from './api/importApi'
 import type { ImportParseResponse } from './types/importTypes'
@@ -31,8 +30,7 @@ function App() {
     return result ? JSON.stringify(result, null, 2) : ''
   }, [result])
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  async function handleSubmit() {
     setIsSubmitting(true)
     setResult(null)
     setErrors([])
@@ -59,7 +57,13 @@ function App() {
         <h1>Extract tagged email data</h1>
       </header>
 
-      <form className="workspace" onSubmit={handleSubmit}>
+      <form
+        className="workspace"
+        onSubmit={(event) => {
+          event.preventDefault()
+          void handleSubmit()
+        }}
+      >
         <section className="panel" aria-labelledby="source-heading">
           <div className="panel-header">
             <h2 id="source-heading">Source text</h2>
