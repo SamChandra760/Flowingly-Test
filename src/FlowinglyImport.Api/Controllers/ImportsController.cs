@@ -10,10 +10,14 @@ namespace FlowinglyImport.Api.Controllers;
 public class ImportsController : ControllerBase
 {
     private readonly IImportParsingService importParsingService;
+    private readonly ILogger<ImportsController> logger;
 
-    public ImportsController(IImportParsingService importParsingService)
+    public ImportsController(
+        IImportParsingService importParsingService,
+        ILogger<ImportsController> logger)
     {
         this.importParsingService = importParsingService;
+        this.logger = logger;
     }
 
     [HttpPost("parse")]
@@ -21,12 +25,18 @@ public class ImportsController : ControllerBase
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     public IActionResult Parse([FromBody] ImportParseRequest request)
     {
+        logger.LogInformation("Parsing import text.");
+
         var result = importParsingService.Parse(request.Text);
 
         if (result.IsSuccess)
         {
             return Ok(result.Value);
         }
+
+        logger.LogWarning(
+            "Import parsing failed validation with {ErrorCount} error(s).",
+            result.Errors.Count);
 
         var modelState = new ModelStateDictionary();
 
