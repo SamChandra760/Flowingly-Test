@@ -1,0 +1,174 @@
+.app-shell {
+  min-height: 100vh;
+  padding: 32px;
+  color: #172033;
+  background: #f6f8fb;
+}
+
+.app-header {
+  max-width: 1180px;
+  margin: 0 auto 24px;
+}
+
+.app-header p {
+  margin: 0 0 8px;
+  color: #53657f;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.app-header h1 {
+  margin: 0;
+  color: #101828;
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr);
+  gap: 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 680px;
+  padding: 20px;
+  border: 1px solid #dce3ee;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.panel-header h2 {
+  margin: 0;
+  color: #101828;
+  font-size: 18px;
+}
+
+.panel-header span {
+  color: #66758b;
+  font-size: 13px;
+}
+
+textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 520px;
+  resize: vertical;
+  padding: 16px;
+  border: 1px solid #cfd8e6;
+  border-radius: 6px;
+  outline: none;
+  color: #182337;
+  background: #fbfcfe;
+  font: 14px/1.55 ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+}
+
+textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+button {
+  min-width: 128px;
+  height: 40px;
+  border: 1px solid #1f5fd7;
+  border-radius: 6px;
+  color: #ffffff;
+  background: #2563eb;
+  font: 700 14px/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+button.secondary {
+  border-color: #c8d2e1;
+  color: #27364c;
+  background: #ffffff;
+}
+
+button.secondary:hover {
+  background: #f4f7fb;
+}
+
+pre {
+  flex: 1;
+  overflow: auto;
+  margin: 0;
+  padding: 16px;
+  border-radius: 6px;
+  background: #101828;
+  color: #e6edf7;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  text-align: left;
+}
+
+.empty-state {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-height: 260px;
+  border: 1px dashed #cfd8e6;
+  border-radius: 6px;
+  color: #66758b;
+  text-align: center;
+}
+
+.error-box {
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  background: #fff1f2;
+  color: #9f1239;
+}
+
+.error-box strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.error-box ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    padding: 20px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    min-height: 0;
+  }
+}
