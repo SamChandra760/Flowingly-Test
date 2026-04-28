@@ -9,6 +9,7 @@ public class ImportParsingValidator : IImportParsingValidator
     {
         var errors = new List<ValidationError>();
 
+        // Whole message to be rejected when <total> is missing.
         if (!fields.TryGetValue("total", out var totalText) || string.IsNullOrWhiteSpace(totalText))
         {
             errors.Add(new ValidationError("total", "Missing required <total> tag."));

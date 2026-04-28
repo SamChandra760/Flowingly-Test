@@ -31,6 +31,7 @@ public class ImportParsingService : IImportParsingService
                 [new ValidationError("text", "Text is required.")]);
         }
 
+        // First validate the tag structure and extract any tagged values from the raw message.
         var parseResult = parser.Parse(text);
         if (!parseResult.IsSuccess)
         {
@@ -38,6 +39,7 @@ public class ImportParsingService : IImportParsingService
         }
 
         var fields = BuildFields(parseResult.Value ?? []);
+        // Then validate business rules that depend on the extracted fields.
         var validationErrors = validator.Validate(fields);
 
         if (validationErrors.Count > 0)

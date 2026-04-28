@@ -31,6 +31,7 @@ public partial class MarkedTextParser
             }
 
             var value = text[valueStartIndex..valueEndIndex].Trim();
+            // Parent containers like <expense> are skipped; only leaf tags become fields.
             if (!TagRegex().IsMatch(value))
             {
                 tags.Add(new ParsedTag(tagName, value));
